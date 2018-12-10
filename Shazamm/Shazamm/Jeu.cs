@@ -20,7 +20,7 @@ namespace Shazamm
             for (int i = 0; i < nbJoueur; i++) {
                 Console.WriteLine("Choix du nom du joueur: ");
                 string nomJoueur = Console.In.ReadLine();
-                Joueur joueur = new Joueur(nomJoueur,i);
+                Joueur joueur = new Joueur(nomJoueur,i,50);
                 listDesJoueurs.Add(joueur);
             }
             foreach(var j in listDesJoueurs)

@@ -10,12 +10,14 @@ namespace Shazamm
     {
         private string nom;
         private int numJoueur;
+        private int mana;
         private string couleurJoueur;
 
-        public Joueur(string nom, int numJoueur)
+        public Joueur(string nom, int numJoueur, int mana)
         {
-            this.Nom = nom;
-            this.NumJoueur = numJoueur;
+            this.nom = nom;
+            this.numJoueur = numJoueur;
+            this.mana = mana;
         }
 
         public string Nom { get => nom; set => nom = value; }
