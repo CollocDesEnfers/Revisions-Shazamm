@@ -8,5 +8,7 @@ namespace Shazamm
 {
     class Carte
     {
+        private int numCarte;
+        private string nomCarte;
     }
 }

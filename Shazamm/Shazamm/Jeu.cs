@@ -9,6 +9,7 @@ namespace Shazamm
     class Jeu
     {
         List<Joueur> listDesJoueurs = new List<Joueur>();
-        List<Carte> list = new List<Carte>();
+        List<Carte> listCarteJ1 = new List<Carte>();
+        List<Carte> listCarteJ2 = new List<Carte>();
     }
 }
