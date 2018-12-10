@@ -13,6 +13,18 @@ namespace Shazamm
         List<Carte> listCarteJ2 = new List<Carte>();
 
         public void debutDuGame() {
+            int nbJoueur = 2;
+            Console.WriteLine("Welcome mes Nigga pour une game de Shazamm !!!");
+            for (int i = 0; i < nbJoueur; i++) {
+                Console.WriteLine("Choix du nom du joueur: ");
+                string nomJoueur = Console.In.ReadLine();
+                Joueur joueur = new Joueur(nomJoueur,i);
+                listDesJoueurs.Add(joueur);
+            }
+            foreach(var j in listDesJoueurs)
+            {
+                Console.WriteLine("Nous avons les joueurs "+j.Nom);
+            }
             distributionCarte();
             afficherListeCarte();
         }
@@ -20,7 +32,7 @@ namespace Shazamm
 
         public void distributionCarte()
         {
-            for (int i=1; i < 14; i++)
+            for (int i=1; i <= 14; i++)
             {
                 Carte c = new Carte(i); 
                 listCarteJ1.Add(c);
