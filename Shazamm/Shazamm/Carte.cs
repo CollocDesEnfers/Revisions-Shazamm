@@ -20,6 +20,7 @@ namespace Shazamm
 
         public override string ToString()
         {
+            //GAB
             if (numCarte == 1)
             {
                 NomCarte = "Carte Mutisme";
@@ -30,6 +31,8 @@ namespace Shazamm
                 return base.ToString();
         }
 
-        
+        public void effetCarte() {
+            //SEB
+        }
     }
 }
