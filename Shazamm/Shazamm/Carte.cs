@@ -10,5 +10,26 @@ namespace Shazamm
     {
         private int numCarte;
         private string nomCarte;
+        public Carte(int numCarte)
+        {
+            this.NumCarte = numCarte;
+        }
+
+        public int NumCarte { get => numCarte; set => numCarte = value; }
+        public string NomCarte { get => nomCarte; set => nomCarte = value; }
+
+        public override string ToString()
+        {
+            if (numCarte == 1)
+            {
+                NomCarte = "Carte Mutisme";
+            }else if (numCarte == 2)
+            {
+                NomCarte= "Carte Clone";
+            }
+                return base.ToString();
+        }
+
+        
     }
 }

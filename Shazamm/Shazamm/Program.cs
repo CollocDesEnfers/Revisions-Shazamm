@@ -10,6 +10,8 @@ namespace Shazamm
     {
         static void Main(string[] args)
         {
+            Jeu j1 = new Jeu();
+            j1.debutDuGame();
         }
     }
 }
