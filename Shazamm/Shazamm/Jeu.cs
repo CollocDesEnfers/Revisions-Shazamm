@@ -11,6 +11,8 @@ namespace Shazamm
         List<Joueur> listDesJoueurs = new List<Joueur>();
         List<Carte> listCarteJ1 = new List<Carte>();
         List<Carte> listCarteJ2 = new List<Carte>();
+        List<Carte> listDesCoupsJ1 = new List<Carte>();
+        List<Carte> listDesCoupsJ2 = new List<Carte>();
 
         public void debutDuGame() {
             int nbJoueur = 2;
