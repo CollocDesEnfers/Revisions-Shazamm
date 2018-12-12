@@ -12,6 +12,7 @@ namespace Shazamm
         private int numJoueur;
         private int mana;
         private string couleurJoueur;
+        private int frappe;
 
         public Joueur(string nom, int numJoueur, int mana)
         {
@@ -23,5 +24,6 @@ namespace Shazamm
         public string Nom { get => nom; set => nom = value; }
         public int NumJoueur { get => numJoueur; set => numJoueur = value; }
         public string CouleurJoueur { get => couleurJoueur; set => couleurJoueur = value; }
+        public int Frappe { get => frappe; set => frappe = value; }
     }
 }

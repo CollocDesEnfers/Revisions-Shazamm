@@ -11,8 +11,12 @@ namespace Shazamm
         List<Joueur> listDesJoueurs = new List<Joueur>();
         List<Carte> listCarteJ1 = new List<Carte>();
         List<Carte> listCarteJ2 = new List<Carte>();
+        List<string> plateau = new List<string>();
         List<Carte> listDesCoupsJ1 = new List<Carte>();
         List<Carte> listDesCoupsJ2 = new List<Carte>();
+        List<int> nbCases = new List<int>(19);
+        int nbTour;
+        int nbManche;
 
         public void debutDuGame() {
             int nbJoueur = 2;
@@ -29,8 +33,45 @@ namespace Shazamm
             }
             distributionCarte();
             afficherListeCarte();
+            choixPuissance();
+            Console.ReadLine();
         }
 
+
+        public void choixPuissance() {
+            for(int i =0; i<listDesJoueurs.Count;i++) {
+                Console.WriteLine("Force du coup: ");
+                int chargeCoup = int.Parse(Console.ReadLine());
+                listDesJoueurs.ElementAt(i).Frappe = chargeCoup;
+                Console.WriteLine("Force du coup: "+ listDesJoueurs.ElementAt(i).Frappe); //ligne test pour voir si la puissance est bonne
+            }
+            
+            resultatAttaqueJoueur();
+        }
+
+        public void resultatAttaqueJoueur()
+        {
+            for (int i = 0; i < listDesJoueurs.Count; i++)
+            {
+                if (listDesJoueurs.ElementAt(0).Frappe > listDesJoueurs.ElementAt(1).Frappe)
+                {
+                    Console.WriteLine("Bien joué j1");
+                }
+                else if (listDesJoueurs.ElementAt(0).Frappe < listDesJoueurs.ElementAt(1).Frappe)
+                {
+                    Console.WriteLine("Le joueur 2 est plus puissant");
+                }
+                else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
+                {
+                    Console.WriteLine("Même force de coups");
+                   // Console.WriteLine("coups " + listDesJoueurs.ElementAt(0).Frappe +" coup j2 "+ listDesJoueurs.ElementAt(1).Frappe);
+                }
+            }
+            foreach (var j in listDesJoueurs)
+            {
+                j.Frappe = 0; // remise à 0 de la mise des joueurs
+            }
+        }
 
         public void distributionCarte()
         {
