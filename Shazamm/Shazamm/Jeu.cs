@@ -8,7 +8,6 @@ namespace Shazamm
 {
     class Jeu
     {
-        Plateau plt = new Plateau();
         List<Joueur> listDesJoueurs = new List<Joueur>();
         List<Carte> listCarteJ1 = new List<Carte>();
         List<Carte> listCarteJ2 = new List<Carte>();
@@ -19,8 +18,7 @@ namespace Shazamm
         int nbManche;
 
         public void debutDuGame() {
-            plt.creaPlateau();
-            plt.vuPlateau();
+
             int nbJoueur = 2;
             Console.WriteLine("Welcome mes Nigga pour une game de Shazamm !!!");
             for (int i = 0; i < nbJoueur; i++) {
