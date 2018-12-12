@@ -8,10 +8,10 @@ namespace Shazamm
 {
     class Jeu
     {
+        Plateau plt = new Plateau();
         List<Joueur> listDesJoueurs = new List<Joueur>();
         List<Carte> listCarteJ1 = new List<Carte>();
         List<Carte> listCarteJ2 = new List<Carte>();
-        List<string> plateau = new List<string>();
         List<Carte> listDesCoupsJ1 = new List<Carte>();
         List<Carte> listDesCoupsJ2 = new List<Carte>();
         List<int> nbCases = new List<int>(19);
@@ -19,6 +19,8 @@ namespace Shazamm
         int nbManche;
 
         public void debutDuGame() {
+            plt.creaPlateau();
+            plt.vuPlateau();
             int nbJoueur = 2;
             Console.WriteLine("Welcome mes Nigga pour une game de Shazamm !!!");
             for (int i = 0; i < nbJoueur; i++) {
@@ -47,6 +49,7 @@ namespace Shazamm
             }
             
             resultatAttaqueJoueur();
+            
         }
 
         public void resultatAttaqueJoueur()
@@ -71,6 +74,7 @@ namespace Shazamm
             {
                 j.Frappe = 0; // remise à 0 de la mise des joueurs
             }
+           
         }
 
         public void distributionCarte()
