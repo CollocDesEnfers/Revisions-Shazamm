@@ -44,6 +44,8 @@ namespace Shazamm
                 int chargeCoup = int.Parse(Console.ReadLine());
                 listDesJoueurs.ElementAt(i).Frappe = chargeCoup;
                 Console.WriteLine("Force du coup: "+ listDesJoueurs.ElementAt(i).Frappe); //ligne test pour voir si la puissance est bonne
+                listDesJoueurs.ElementAt(i).Mana -= chargeCoup;
+                Console.WriteLine("donc il reste " + listDesJoueurs.ElementAt(i).Mana+" point(s) à "+ listDesJoueurs.ElementAt(i).Nom);
             }
             
             resultatAttaqueJoueur();
