@@ -60,21 +60,33 @@ namespace Shazamm
 
         public void resultatAttaqueJoueur()
         {
+            Console.WriteLine("place mur de base" + superPlateau.PlaceMur);
             for (int i = 0; i < listDesJoueurs.Count; i++)
             {
                 if (listDesJoueurs.ElementAt(0).Frappe > listDesJoueurs.ElementAt(1).Frappe)
                 {
                     Console.WriteLine("Bien joué j1");
+                    superPlateau.PlaceMur += 1;
+                    Console.WriteLine("place mur" + superPlateau.PlaceMur);
+                    superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[BITE+++]");
+                    superPlateau.afficherPlateau();
+                    break;
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe < listDesJoueurs.ElementAt(1).Frappe)
                 {
                     Console.WriteLine("Le joueur 2 est plus puissant");
+                    superPlateau.PlaceMur -= 1;
+                    Console.WriteLine("place mur"+ superPlateau.PlaceMur);
+                    superPlateau.PlateauCase.Insert(superPlateau.PlaceMur,"[BITE]");
+                    superPlateau.afficherPlateau();
+                    break;
                     
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
                 {
                     Console.WriteLine("Même force de coups");
-                   // Console.WriteLine("coups " + listDesJoueurs.ElementAt(0).Frappe +" coup j2 "+ listDesJoueurs.ElementAt(1).Frappe);
+                    // Console.WriteLine("coups " + listDesJoueurs.ElementAt(0).Frappe +" coup j2 "+ listDesJoueurs.ElementAt(1).Frappe);
+                    break;
                 }
             }
             foreach (var j in listDesJoueurs)

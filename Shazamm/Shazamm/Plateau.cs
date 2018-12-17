@@ -9,7 +9,7 @@ namespace Shazamm
 {
     class Plateau
     {
-        int nbCase;
+        int nbCase=18;
         int placeJ1;
         int placeMur;
         int placeJ2;
@@ -23,7 +23,6 @@ namespace Shazamm
 
         public void creationPlateau()
         {
-            nbCase = 18;
             placeMur = nbCase / 2;
             placeJ1 = placeMur - 2;
             placeJ2 = placeMur + 2;
