@@ -96,6 +96,7 @@ namespace Shazamm
                 else if (listDesJoueurs.ElementAt(0).Frappe < listDesJoueurs.ElementAt(1).Frappe)
                 {
                     Console.WriteLine("Le joueur 2 est plus puissant");
+                    
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
                 {
