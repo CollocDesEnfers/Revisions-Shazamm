@@ -83,48 +83,48 @@ namespace Shazamm
         public void effetCarte(int num) { // num c'est le numCarte
             switch (num)
             {
-                case 1:
-                    mutisme();
+                case 1:   //MUTISME
+
                     break;
-                case 2:
-                    clone();
+                case 2:   //CLONE
+                    
                     break;
 
-                case 3:
-                    larcin();
+                case 3: //LARCIN
+                    
                     break;
-                case 4:
-                    finDeManche();
+                case 4: //FIN DE MANCHE
+                    
                     break;
-                case 5:
-                    milieu();
+                case 5: //MILIEU
+                    
                     break;
-                case 6:
-                    recyclage();
+                case 6: //RECYCLAGE
+                    
                     break;
-                case 7:
-                    boostAttaque();
+                case 7: //BOOST ATTAQUE
+                    
                     break;
-                case 8:
-                    doubleDose();
+                case 8: //Double DOSE
+                    
                     break;
-                case 9:
-                    quiPerdGagne();
+                case 9: //QUI PERD GAGNE
+                    
                     break;
-                case 10:
-                    brasier();
+                case 10:       //BRASIER
+                    
                     break;
-                case 11:
-                    resistance();
+                case 11:    //RESISTANCE
+                    
                     break;
-                case 12:
-                    harpagon();
+                case 12:    //HARPAGON
+                    
                     break;
-                case 13:
-                    boostReserve();
+                case 13:    //BOOST RESERVE
+                    
                     break;
-                case 14:
-                    aspiration();
+                case 14:    //ASPIRATION
+                    
 
                     break;
                 default:
