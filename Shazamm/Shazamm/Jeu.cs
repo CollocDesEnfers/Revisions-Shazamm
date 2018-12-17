@@ -16,9 +16,11 @@ namespace Shazamm
         List<int> nbCases = new List<int>(19);
         int nbTour;
         int nbManche;
+        Plateau superPlateau = new Plateau();
 
         public void debutDuGame() {
-
+            superPlateau.creationPlateau();
+            superPlateau.afficherPlateau();
             int nbJoueur = 2;
             Console.WriteLine("Welcome mes Nigga pour une game de Shazamm !!!");
             for (int i = 0; i < nbJoueur; i++) {
@@ -77,7 +79,7 @@ namespace Shazamm
            
         }
 
-        public void distributionCarte()
+        public void distributionCarte()// faire ça pour la J2
         {
             for (int i=1; i <= 14; i++)
             {
