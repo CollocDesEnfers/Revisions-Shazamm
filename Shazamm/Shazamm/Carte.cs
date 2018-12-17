@@ -80,7 +80,7 @@ namespace Shazamm
         }
 
         //Renvoie vers la méthode carte correspondante au num
-        public void effetCarte(int num) { // num c'est le numCarte
+        /*public void effetCarte(int num) { // num c'est le numCarte
             switch (num)
             {
                 case 1:   //MUTISME
@@ -131,7 +131,7 @@ namespace Shazamm
                     Console.WriteLine("Default case");
                     break;
             }
-        }
+            */
     }
-
 }
+
