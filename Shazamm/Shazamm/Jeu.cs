@@ -15,8 +15,8 @@ namespace Shazamm
         List<Carte> listDesCoupsJ1 = new List<Carte>();
         List<Carte> listDesCoupsJ2 = new List<Carte>();
         List<int> nbCases = new List<int>(19);
-        int nbTour;
-        int nbManche;
+        int nbTour=1;
+        int nbManche=1;
         Plateau superPlateau = new Plateau();
 
         public void debutDuGame() {
@@ -38,7 +38,10 @@ namespace Shazamm
             piocheCartes(listDesJoueurs,listCarte, listCarteJ1);  //J1 pioche 5 cartes
             piocheCartes(listDesJoueurs,listCarte, listCarteJ2);  //J2 pioche 5 cartes
             afficherListeCarte();
-            choixPuissance();
+            while (nbManche < 3)
+            {
+                choixPuissance();
+            }    
             //choixCartes(1,listCarteJ1, listDesCoupsJ1);
             //choixCartes(2, listCarteJ2, listDesCoupsJ2);
             Console.ReadLine();
@@ -54,8 +57,7 @@ namespace Shazamm
                 Console.WriteLine("Force du coup: "+ listDesJoueurs.ElementAt(i).Frappe); //ligne test pour voir si la puissance est bonne
                 listDesJoueurs.ElementAt(i).Mana -= chargeCoup;
                 Console.WriteLine("donc il reste " + listDesJoueurs.ElementAt(i).Mana+" point(s) à "+ listDesJoueurs.ElementAt(i).Nom);
-            }
-            
+            }   
             resultatAttaqueJoueur();    
         }
 
@@ -92,22 +94,48 @@ namespace Shazamm
             {
                 if (listDesJoueurs.ElementAt(0).Frappe > listDesJoueurs.ElementAt(1).Frappe)
                 {
-                    Console.WriteLine("Bien joué j1");
-                    superPlateau.PlaceMur += 1;
-                    Console.WriteLine("place mur" + superPlateau.PlaceMur);
-                    superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[BITE+++]");
-                    superPlateau.afficherPlateau();
+                    if (superPlateau.PlaceMur != superPlateau.PlaceJ2)
+                    {
+                        Console.WriteLine("Le joueur 21est plus puissant");
+                        superPlateau.PlaceMur += 1;
+                        Console.WriteLine("place mur" + superPlateau.PlaceMur);
+                        superPlateau.PlateauCase.Remove("[M]");
+                        superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[M]");
+                        superPlateau.afficherPlateau();
+                        break;
+                    }
+                    else if (superPlateau.PlaceMur == superPlateau.PlaceJ2){ // condition si J1 est dans les choux => si le mur arrive sûr J1 
+                        Console.WriteLine("Le joueur 2 est plus puissant (ELSE IF)");
+                        superPlateau.PlateauCase.Clear();
+                        superPlateau.NbCase -= 2;
+                        superPlateau.creationPlateau();
+                        Console.WriteLine("CREATION PLATEAU ELSE IF J1");
+                        superPlateau.afficherPlateau();
+                        break;
+                    }
                     break;
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe < listDesJoueurs.ElementAt(1).Frappe)
                 {
-                    Console.WriteLine("Le joueur 2 est plus puissant");
-                    superPlateau.PlaceMur -= 1;
-                    Console.WriteLine("place mur"+ superPlateau.PlaceMur);
-                    superPlateau.PlateauCase.Insert(superPlateau.PlaceMur,"[BITE]");
-                    superPlateau.afficherPlateau();
-                    break;
-                    
+                    if (superPlateau.PlaceMur != superPlateau.PlaceJ1)
+                    {
+                        Console.WriteLine("Le joueur 2 est plus puissant");
+                        superPlateau.PlaceMur -= 1;
+                        Console.WriteLine("place mur" + superPlateau.PlaceMur);
+                        superPlateau.PlateauCase.Remove("[M]");
+                        superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[M]");
+                        superPlateau.afficherPlateau();
+                        break;
+                    } else if (superPlateau.PlaceMur == superPlateau.PlaceJ1) { // condition si J2 est dans les choux => si le mur arrive sûr J2 
+                        Console.WriteLine("Le joueur 2 est plus puissant (ELSE IF)");
+                        superPlateau.PlateauCase.Clear();
+                        superPlateau.NbCase -= 2;
+                        superPlateau.creationPlateau();
+                        Console.WriteLine("CREATION PLATEAU ELSE IF J2");
+                        superPlateau.afficherPlateau();
+                        break;
+                    }
+                    break;                 
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
                 {
