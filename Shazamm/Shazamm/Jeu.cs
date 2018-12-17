@@ -39,6 +39,8 @@ namespace Shazamm
             piocheCartes(listDesJoueurs,listCarte, listCarteJ2);  //J2 pioche 5 cartes
             afficherListeCarte();
             choixPuissance();
+            //choixCartes(1,listCarteJ1, listDesCoupsJ1);
+            //choixCartes(2, listCarteJ2, listDesCoupsJ2);
             Console.ReadLine();
 
         }
@@ -54,8 +56,33 @@ namespace Shazamm
                 Console.WriteLine("donc il reste " + listDesJoueurs.ElementAt(i).Mana+" point(s) à "+ listDesJoueurs.ElementAt(i).Nom);
             }
             
-            resultatAttaqueJoueur();
+            resultatAttaqueJoueur();    
+        }
+
+        public void choixCartes(int id ,List<Carte> listCarte, List<Carte> listCoups) //le joueur choisit les cartes qu'il souhaite jouer
+        {   
             
+            afficherCartesJoueur(id, listCarte);
+            int choixCarte=1;
+            while (choixCarte != 0)
+            {
+                choixCarte = int.Parse(Console.ReadLine());
+                if (choixCarte == 0)
+                {
+                    //Console.WriteLine("Vous avez sélectionné les cartes suivantes  ");
+                }
+                else
+                {
+              
+                    listCoups.Add(listCarte.ElementAt(choixCarte - 1));
+                    listCarte.RemoveAt(choixCarte-1);
+                    Console.WriteLine("Vous avez sélectionné la carte " + listCoups.Last().NomCarte);
+
+                    afficherCartesJoueur(id, listCarte);
+
+                }
+
+            }         
         }
 
         public void resultatAttaqueJoueur()
@@ -120,15 +147,29 @@ namespace Shazamm
             }
            
         }
+
+
+        public void afficherListeCarte()
+        {
             
-
-          
-
-        public void afficherListeCarte() {
-            foreach(var c in listCarteJ1)
+            foreach (var c in listCarte)
             {
-                Console.WriteLine("il y a "+c.NumCarte+" "+c.NomCarte);
+                Console.WriteLine(" " + c.NumCarte + " : " + c.NomCarte);
             }
         }
+
+
+
+        public void afficherCartesJoueur(int i, List<Carte> listCarte) {  //afficher la liste des cartes d'un joueur
+            Console.WriteLine("Joueur "+i+ ",Entrez le numéro de la carte que vous souhaitez jouer, ou 0 pour ne pas en jouer \n\n0 : Ne plus  rien jouer " );
+            int numeroCarte = 1;
+            foreach (var c in listCarte)
+            {
+                Console.WriteLine(+numeroCarte + " : "+c.NomCarte);
+                numeroCarte++;
+            }
+        }
+
+
     }
 }
