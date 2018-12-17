@@ -9,6 +9,7 @@ namespace Shazamm
     class Jeu
     {
         List<Joueur> listDesJoueurs = new List<Joueur>();
+        List<Carte> listCarte = new List<Carte>(); //liste générale de toutes les cartes
         List<Carte> listCarteJ1 = new List<Carte>();
         List<Carte> listCarteJ2 = new List<Carte>();
         List<Carte> listDesCoupsJ1 = new List<Carte>();
@@ -34,9 +35,12 @@ namespace Shazamm
                 Console.WriteLine("Nous avons les joueurs "+j.Nom);
             }
             distributionCarte();
+            piocheCartes(listDesJoueurs,listCarte, listCarteJ1);  //J1 pioche 5 cartes
+            piocheCartes(listDesJoueurs,listCarte, listCarteJ2);  //J2 pioche 5 cartes
             afficherListeCarte();
             choixPuissance();
             Console.ReadLine();
+
         }
 
 
@@ -85,10 +89,28 @@ namespace Shazamm
             for (int i=1; i <= 14; i++)
             {
                 Carte c = new Carte(i); 
-                listCarteJ1.Add(c);
+                listCarte.Add(c);
                 c.ToString();
             }
         }
+
+        public void piocheCartes(List<Joueur> listDesJoueurs, List<Carte> listCarte, List<Carte> listCarteJ) // Chaque joueur pioche aléatoirement 5 cartes
+        {
+            int random; // variable qui stockera les int aléatoires
+            Random aleatoire = new Random(); // creation de la variable aléatoire Random
+
+            for (int j = 0; j < 5; j++) //Chaque joueur pioche 5 cartes
+            {
+                //Joueur pioche une carte
+                random = aleatoire.Next(listCarte.Count);
+                listCarteJ.Add(listCarte.ElementAt(random));
+                listCarte.RemoveAt(random); 
+            }
+           
+        }
+            
+
+          
 
         public void afficherListeCarte() {
             foreach(var c in listCarteJ1)
