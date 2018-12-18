@@ -96,12 +96,13 @@ namespace Shazamm
                 {
                     if (superPlateau.PlaceMur != superPlateau.PlaceJ2)
                     {
-                        Console.WriteLine("Le joueur 21est plus puissant");
+                        Console.WriteLine("Le joueur 1 est plus puissant");
                         superPlateau.PlaceMur += 1;
                         Console.WriteLine("place mur" + superPlateau.PlaceMur);
                         superPlateau.PlateauCase.Remove("[M]");
                         superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[M]");
                         superPlateau.afficherPlateau();
+                        nbTour += 1;
                         break;
                     }
                     else if (superPlateau.PlaceMur == superPlateau.PlaceJ2){ // condition si J1 est dans les choux => si le mur arrive sûr J1 
@@ -111,6 +112,12 @@ namespace Shazamm
                         superPlateau.creationPlateau();
                         Console.WriteLine("CREATION PLATEAU ELSE IF J1");
                         superPlateau.afficherPlateau();
+                        nbTour = 0;
+                        nbManche += 1;
+                        foreach (var j in listDesJoueurs)
+                        {
+                            j.Mana = 50;
+                        }
                         break;
                     }
                     break;
@@ -133,6 +140,12 @@ namespace Shazamm
                         superPlateau.creationPlateau();
                         Console.WriteLine("CREATION PLATEAU ELSE IF J2");
                         superPlateau.afficherPlateau();
+                        nbTour = 0;
+                        nbManche += 1;
+                        foreach (var j in listDesJoueurs)
+                        {
+                            j.Mana = 50;
+                        }
                         break;
                     }
                     break;                 
