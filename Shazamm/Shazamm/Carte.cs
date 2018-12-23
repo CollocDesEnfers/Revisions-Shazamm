@@ -24,9 +24,10 @@ namespace Shazamm
             if (numCarte == 1)
             {
                 NomCarte = "Carte Mutisme";
-            }else if (numCarte == 2)
+            }
+            else if (numCarte == 2)
             {
-                NomCarte= "Carte Clone";
+                NomCarte = "Carte Clone";
             }
             else if (numCarte == 3)
             {
@@ -80,58 +81,59 @@ namespace Shazamm
         }
 
         //Renvoie vers la méthode carte correspondante au num
-        /*public void effetCarte(int num) { // num c'est le numCarte
+        public void effetCarte(int num)
+        { // num c'est le numCarte
             switch (num)
             {
                 case 1:   //MUTISME
-
+                    Console.WriteLine("Case Mutisme");
                     break;
                 case 2:   //CLONE
-                    
+                    Console.WriteLine("Case Clone");
                     break;
 
                 case 3: //LARCIN
-                    
+                    Console.WriteLine("Case Larcin");
                     break;
                 case 4: //FIN DE MANCHE
-                    
+                    Console.WriteLine("Case Fin de manche");
                     break;
                 case 5: //MILIEU
-                    
+                    Console.WriteLine("Case Milieu");
                     break;
                 case 6: //RECYCLAGE
-                    
+                    Console.WriteLine("Case RECYCLAGE");
                     break;
                 case 7: //BOOST ATTAQUE
-                    
+                    Console.WriteLine("Case BOOST ATTAQUE");
                     break;
                 case 8: //Double DOSE
-                    
+                    Console.WriteLine("Case Double DOSE");
                     break;
                 case 9: //QUI PERD GAGNE
-                    
+                    Console.WriteLine("Case QUI PERD GAGNE");
                     break;
                 case 10:       //BRASIER
-                    
+                    Console.WriteLine("Case BRASIER");
                     break;
                 case 11:    //RESISTANCE
-                    
+                    Console.WriteLine("Case RESISTANCE");
                     break;
                 case 12:    //HARPAGON
-                    
+                    Console.WriteLine("Case HARPAGON");
                     break;
                 case 13:    //BOOST RESERVE
-                    
+                    Console.WriteLine("Case BOOST RESERVE");
                     break;
                 case 14:    //ASPIRATION
-                    
 
+                    Console.WriteLine("Case ASPIRATION");
                     break;
                 default:
                     Console.WriteLine("Default case");
                     break;
             }
-            */
+        }
     }
 }
 
