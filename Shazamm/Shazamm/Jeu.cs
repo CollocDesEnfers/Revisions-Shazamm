@@ -32,7 +32,7 @@ namespace Shazamm
             }
             foreach(var j in listDesJoueurs)
             {
-                Console.WriteLine("Nous avons les joueurs "+j.Nom);
+                Console.WriteLine("Nous avons le joueur "+j.Nom);
             }
             distributionCarte();
             piocheCartes(listDesJoueurs,listCarte, listCarteJ1);  //J1 pioche 5 cartes
@@ -57,31 +57,51 @@ namespace Shazamm
                 Console.WriteLine("Force du coup: "+ listDesJoueurs.ElementAt(i).Frappe); //ligne test pour voir si la puissance est bonne
                 listDesJoueurs.ElementAt(i).Mana -= chargeCoup;
                 Console.WriteLine("donc il reste " + listDesJoueurs.ElementAt(i).Mana+" point(s) à "+ listDesJoueurs.ElementAt(i).Nom);
-            }   
-            resultatAttaqueJoueur();    
-        }
-
-        public void choixCartes(int id ,List<Carte> listCarte, List<Carte> listCoups) //le joueur choisit les cartes qu'il souhaite jouer
-        {   
-            
-            afficherCartesJoueur(id, listCarte);
-            int choixCarte=1;
-            while (choixCarte != 0)
-            {
-                choixCarte = int.Parse(Console.ReadLine());
-                if (choixCarte == 0)
-                {
-                    //Console.WriteLine("Vous avez sélectionné les cartes suivantes  ");
+                Console.WriteLine("Voulez vous jouer une carte ? O/N");
+                string jouerCarte = Console.In.ReadLine();
+                if(jouerCarte == "O") {
+                    Console.WriteLine("Voulez avez dicidé de jouer une carte... ");
+                    choixCartes(i, listCarte, listDesJoueurs.ElementAt(i));
                 }
                 else
                 {
-              
-                    listCoups.Add(listCarte.ElementAt(choixCarte - 1));
-                    listCarte.RemoveAt(choixCarte-1);
-                    Console.WriteLine("Vous avez sélectionné la carte " + listCoups.Last().NomCarte);
+                    Console.WriteLine("Voulez avez dicidé de ne pas jouer de carte... ");
+                }
 
-                    afficherCartesJoueur(id, listCarte);
+                resultatAttaqueJoueur();
+            }
 
+        }
+
+        public void choixCartes(int id ,List<Carte> listCarte, Joueur joueur) //le joueur choisit les cartes qu'il souhaite jouer
+        {
+            List<Carte> listCoups = new List<Carte>();
+            afficherCartesJoueur();
+            int choixCarte=1;
+            while (choixCarte != 0)
+            {
+                int superCarte = int.Parse(Console.ReadLine());
+                if (superCarte == 0)
+                {
+                    break;
+                }
+                else
+                {
+                    afficherCartesJoueur();
+                    Console.WriteLine("Votre choix de carte : ");
+                    
+                    // //ERREUR
+                   // Console.WriteLine("Vous avez sélectionné la carte " + listCoups.Last().NomCarte);
+                    foreach (var c in listCarte) {
+                        c.effetCarte(superCarte, joueur, superPlateau);
+
+                        if (superCarte == c.NumCarte) {
+                            listCoups.Add(c);
+                            listCarte.Remove(c);
+                            break;
+                        }
+                        break;
+                    }
                 }
 
             }         
@@ -96,9 +116,9 @@ namespace Shazamm
                 {
                     if (superPlateau.PlaceMur != superPlateau.PlaceJ2)
                     {
-                        Console.WriteLine("Le joueur 1 est plus puissant");
+                        Console.WriteLine("Le joueur 1 est plus puissant ");
                         superPlateau.PlaceMur += 1;
-                        Console.WriteLine("place mur" + superPlateau.PlaceMur);
+                        Console.WriteLine("place mur " + superPlateau.PlaceMur);
                         superPlateau.PlateauCase.Remove("[M]");
                         superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[M]");
                         superPlateau.afficherPlateau();
@@ -106,11 +126,11 @@ namespace Shazamm
                         break;
                     }
                     else if (superPlateau.PlaceMur == superPlateau.PlaceJ2){ // condition si J1 est dans les choux => si le mur arrive sûr J1 
-                        Console.WriteLine("Le joueur 2 est plus puissant (ELSE IF)");
+                        Console.WriteLine(" Le joueur 2 est plus puissant (ELSE IF)");
                         superPlateau.PlateauCase.Clear();
                         superPlateau.NbCase -= 2;
                         superPlateau.creationPlateau();
-                        Console.WriteLine("CREATION PLATEAU ELSE IF J1");
+                        Console.WriteLine(" CREATION PLATEAU ELSE IF J1");
                         superPlateau.afficherPlateau();
                         nbTour = 0;
                         nbManche += 1;
@@ -126,19 +146,19 @@ namespace Shazamm
                 {
                     if (superPlateau.PlaceMur != superPlateau.PlaceJ1)
                     {
-                        Console.WriteLine("Le joueur 2 est plus puissant");
+                        Console.WriteLine(" Le joueur 2 est plus puissant ");
                         superPlateau.PlaceMur -= 1;
-                        Console.WriteLine("place mur" + superPlateau.PlaceMur);
+                        Console.WriteLine("place mur " + superPlateau.PlaceMur);
                         superPlateau.PlateauCase.Remove("[M]");
                         superPlateau.PlateauCase.Insert(superPlateau.PlaceMur, "[M]");
                         superPlateau.afficherPlateau();
                         break;
                     } else if (superPlateau.PlaceMur == superPlateau.PlaceJ1) { // condition si J2 est dans les choux => si le mur arrive sûr J2 
-                        Console.WriteLine("Le joueur 2 est plus puissant (ELSE IF)");
+                        Console.WriteLine(" Le joueur 2 est plus puissant (ELSE IF) ");
                         superPlateau.PlateauCase.Clear();
                         superPlateau.NbCase -= 2;
                         superPlateau.creationPlateau();
-                        Console.WriteLine("CREATION PLATEAU ELSE IF J2");
+                        Console.WriteLine(" CREATION PLATEAU ELSE IF J2 ");
                         superPlateau.afficherPlateau();
                         nbTour = 0;
                         nbManche += 1;
@@ -152,7 +172,7 @@ namespace Shazamm
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
                 {
-                    Console.WriteLine("Même force de coups");
+                    Console.WriteLine(" Même force de coups ");
                     // Console.WriteLine("coups " + listDesJoueurs.ElementAt(0).Frappe +" coup j2 "+ listDesJoueurs.ElementAt(1).Frappe);
                     break;
                 }
@@ -201,12 +221,13 @@ namespace Shazamm
 
 
 
-        public void afficherCartesJoueur(int i, List<Carte> listCarte) {  //afficher la liste des cartes d'un joueur
-            Console.WriteLine("Joueur "+i+ ",Entrez le numéro de la carte que vous souhaitez jouer, ou 0 pour ne pas en jouer \n\n0 : Ne plus  rien jouer " );
+        public void afficherCartesJoueur() {  //afficher la liste des cartes d'un joueur
+            Console.WriteLine("Entrez le numéro de la carte que vous souhaitez jouer, ou 0 pour ne pas en jouer \n\n0 : Ne plus  rien jouer " );
             int numeroCarte = 1;
+            Console.WriteLine(" liste des cartes dans liste carte ");
             foreach (var c in listCarte)
             {
-                Console.WriteLine(+numeroCarte + " : "+c.NomCarte);
+                Console.WriteLine(c.NomCarte+" à la place "+ numeroCarte+" dans la liste carte son vrai num est "+ c.NumCarte+" ");
                 numeroCarte++;
             }
         }

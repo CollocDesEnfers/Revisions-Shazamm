@@ -81,7 +81,7 @@ namespace Shazamm
         }
 
         //Renvoie vers la méthode carte correspondante au num
-        public void effetCarte(int num)
+        public void effetCarte(int num, Joueur joueur, Plateau plateau)
         { // num c'est le numCarte
             switch (num)
             {
@@ -100,15 +100,20 @@ namespace Shazamm
                     break;
                 case 5: //MILIEU
                     Console.WriteLine("Case Milieu");
+                    plateau.PlaceMur = plateau.NbCase / 2 + 1;
                     break;
                 case 6: //RECYCLAGE
                     Console.WriteLine("Case RECYCLAGE");
                     break;
                 case 7: //BOOST ATTAQUE
                     Console.WriteLine("Case BOOST ATTAQUE");
+                    joueur.Frappe += 7;
+                    Console.WriteLine("BOOST ATTAQUE"+joueur.Frappe);
                     break;
                 case 8: //Double DOSE
                     Console.WriteLine("Case Double DOSE");
+                    joueur.Frappe *= 2;
+                    Console.WriteLine("Double dose" + joueur.Frappe);
                     break;
                 case 9: //QUI PERD GAGNE
                     Console.WriteLine("Case QUI PERD GAGNE");
