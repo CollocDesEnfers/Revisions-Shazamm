@@ -57,6 +57,7 @@ namespace Shazamm
                 Console.WriteLine("Force du coup: "+ listDesJoueurs.ElementAt(i).Frappe); //ligne test pour voir si la puissance est bonne
                 listDesJoueurs.ElementAt(i).Mana -= chargeCoup;
                 Console.WriteLine("donc il reste " + listDesJoueurs.ElementAt(i).Mana+" point(s) à "+ listDesJoueurs.ElementAt(i).Nom);
+                /*
                 Console.WriteLine("Voulez vous jouer une carte ? O/N");
                 string jouerCarte = Console.In.ReadLine();
                 if(jouerCarte == "O") {
@@ -67,10 +68,10 @@ namespace Shazamm
                 {
                     Console.WriteLine("Voulez avez dicidé de ne pas jouer de carte... ");
                 }
+                */
 
-                resultatAttaqueJoueur();
             }
-
+            resultatAttaqueJoueur();
         }
 
         public void choixCartes(int id ,List<Carte> listCarte, Joueur joueur) //le joueur choisit les cartes qu'il souhaite jouer
@@ -98,7 +99,6 @@ namespace Shazamm
                         if (superCarte == c.NumCarte) {
                             listCoups.Add(c);
                             listCarte.Remove(c);
-                            break;
                         }
                         break;
                     }
@@ -140,7 +140,6 @@ namespace Shazamm
                         }
                         break;
                     }
-                    break;
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe < listDesJoueurs.ElementAt(1).Frappe)
                 {
@@ -167,8 +166,7 @@ namespace Shazamm
                             j.Mana = 50;
                         }
                         break;
-                    }
-                    break;                 
+                    }               
                 }
                 else if (listDesJoueurs.ElementAt(0).Frappe == listDesJoueurs.ElementAt(1).Frappe)
                 {
